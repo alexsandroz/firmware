@@ -1,0 +1,4 @@
+config BR2_PACKAGE_HI3881
+	bool "hi3881"
+	help
+	  hi3881 - Wifi Driver Hi3881
