@@ -17,7 +17,7 @@
 #include "securec.h"
 #include "wifi_mac80211_ops.h"
 #include "wifi_module.h"
-#include "../hdf_wifi_core.h"
+#include "hdf_wifi_core.h"
 
 #define HDF_LOG_TAG HDF_WIFI_CORE
 

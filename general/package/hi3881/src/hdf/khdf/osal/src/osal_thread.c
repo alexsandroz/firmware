@@ -24,7 +24,7 @@
 #include <linux/string.h>
 #include <linux/types.h>
 #include <uapi/linux/sched.h>
-#include <uapi/linux/sched/types.h>
+//#include <uapi/linux/sched/types.h>  MOD_OPENIPC
 #include "hdf_log.h"
 #include "osal_mem.h"
 #include "securec.h"

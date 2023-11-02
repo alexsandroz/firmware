@@ -46,21 +46,51 @@ HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/include/config
 HDF_WIFI_INCS  +=-I$(PWD)/src/bounds_checking_function/include
 HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/include/osal
 HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/model/network/wifi/platform/include
+HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/model/network/wifi/platform/include/message
 HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/model/network/wifi/core
 HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/include
 HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/model/network/wifi/module
-
+HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/utils/include
+HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/model/network/common/netdevice
+HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/include/platform
+HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/core/host/include
+HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/core/shared/include
 EXTRA_CFLAGS   += $(HDF_WIFI_INCS)
 
-############################## Sources ###################################
+############################## Generic ####################################
+
+hi3881-objs += src/hdf/framework/model/network/wifi/core/components/softap/ap.o
+hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/hdf_wifi_event.o 
+hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/hdf_wlan_config_parser.o
+hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/hdf_wlan_product.o
+hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/hdf_wlan_utils.o
+hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/hdf_wlan_power_manager.o
+hi3881-objs += src/hdf/framework/model/network/common/netdevice/net_device.o
+hi3881-objs += src/hdf/framework/model/network/wifi/core/hdf_wifi_core.o
+hi3881-objs += src/hdf/framework/model/network/wifi/module/wifi_module.o
+hi3881-objs += src/hdf/framework/model/network/wifi/module/wifi_base.o
+hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/message/sidecar.o
+hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/message/message_router.o
+hi3881-objs += src/hdf/framework/ability/sbuf/src/hdf_sbuf.o
+hi3881-objs += src/hdf/framework/ability/sbuf/src/hdf_sbuf_impl_raw.o
+hi3881-objs += src/hdf/framework/core/host/src/devsvc_manager_clnt.o
+hi3881-objs += src/bounds_checking_function/src/vsprintf_s.o
+hi3881-objs += src/bounds_checking_function/src/strcpy_s.o
+hi3881-objs += src/bounds_checking_function/src/strncpy_s.o
+hi3881-objs += src/bounds_checking_function/src/memset_s.o
+hi3881-objs += src/bounds_checking_function/src/memcpy_s.o
+hi3881-objs += src/bounds_checking_function/src/memmove_s.o
+hi3881-objs += src/hdf/khdf/network/src/netbuf_adapter.o
+hi3881-objs += src/hdf/khdf/osal/src/osal_thread.o
+hi3881-objs += src/hdf/khdf/osal/src/osal_time.o
+hi3881-objs += src/hdf/khdf/osal/src/osal_mutex.o
+hi3881-objs += src/hdf/khdf/osal/src/osal_mem.o
+
+############################## Plataform ###################################
 OAL_PATH := src/oal/
+ADPATER_PATH := src/hdfadapt/
 OAM_PATH := src/oam/
 FRW_PATH := src/frw/
-MAC_PATH := src/mac/common/
-HMAC_PATH := src/mac/hmac/
-HCC_PATH := src/hcc/
-WAL_PATH := src/wal/
-ADPATER_PATH := src/hdfadapt/
 
 oal-objs := oal_util.o oal_net.o oal_main.o oal_mem.o
 oal-objs += oal_cfg80211.o oal_sdio_host.o oal_kernel_file.o exception_rst.o 
@@ -83,6 +113,12 @@ hi3881-objs += $(board-objs)
 frw-objs += frw_event.o frw_event_sched.o frw_main.o frw_task.o frw_timer.o
 frw-objs := $(addprefix $(FRW_PATH),$(frw-objs))
 hi3881-objs += $(frw-objs)
+
+###############################  Wifi ####################################
+WAL_PATH := src/wal/
+MAC_PATH := src/mac/common/
+HCC_PATH := src/hcc/
+HMAC_PATH := src/mac/hmac/
 
 wal-objs  := wal_customize.o wal_cfg80211.o wal_11d.o wal_hipriv.o wal_event_msg.o hi_wifi_driver_api.o wal_linux_flowctl.o wal_ioctl.o wal_event.o wal_scan.o wal_main.o wal_regdb.o wal_mac80211.o
 wal-objs  := $(addprefix $(WAL_PATH),$(wal-objs))
@@ -128,9 +164,6 @@ hi3881-objs += $(hmac-objs)
 obj-m += hi3881.o
 
 modules:
-	@echo ==========================================================
-	@echo ARCH=$(ARCH)
-	@echo ==========================================================
 	$(MAKE) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) -C $(KSRC) M=$(PWD) modules
 
 clean:
