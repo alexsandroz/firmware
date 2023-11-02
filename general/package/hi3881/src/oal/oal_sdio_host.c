@@ -1885,7 +1885,7 @@ static hi_s32 oal_sdio_resume(struct device *dev)
 }
 #endif
 
-MODULE_DEVICE_TABLE(sdio, g_oal_sdio_ids);
+//MODULE_DEVICE_TABLE(sdio, g_oal_sdio_ids); MOD_OPENIPC CRITICAL
 
 #if (_PRE_OS_VERSION_LINUX == _PRE_OS_VERSION)
 static const struct dev_pm_ops oal_sdio_pm_ops = {

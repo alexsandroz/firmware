@@ -35,7 +35,8 @@ extern "C" {
 **************************************************************************** */
 #if (_PRE_OS_VERSION_LINUX == _PRE_OS_VERSION)
 #ifdef _PRE_HDF_LINUX
-typedef wait_queue_entry_t oal_wait_queue_stru;
+//typedef wait_queue_entry_t oal_wait_queue_stru; MOD_OPENIPC
+typedef wait_queue_t oal_wait_queue_stru;
 #else
 typedef wait_queue_t oal_wait_queue_stru;
 #endif

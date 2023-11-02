@@ -85,10 +85,11 @@ extern "C" {
 
 #if (_PRE_OS_VERSION_LINUX == _PRE_OS_VERSION)
 typedef hi_void (*oal_defer_func)(unsigned long);
-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 0))
+//#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 0)) MOD_OPENIPC
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 9, 37))
 typedef hi_void (*oal_timer_func)(struct timer_list *);
 #else
-typedef hi_void (*oal_timer_func)(unsigned long);
+typedef hi_void (*oal_timer_func)(unsigned long); 
 #endif
 #endif
 typedef hi_u32 (*oal_module_func_t)(hi_void);

@@ -81,7 +81,11 @@ static inline hi_void oal_timer_init(oal_timer_list_stru *pst_timer, unsigned lo
     unsigned long ui_arg)
 {
 #ifdef _PRE_HDF_LINUX
-    timer_setup(pst_timer, p_func, 0);
+    //timer_setup(pst_timer, p_func, 0);  MOD_OPENIPC
+    init_timer(pst_timer);
+    pst_timer->function = (unsigned long)p_func;
+    pst_timer->data = ui_arg;
+    // end MOD_OPENIPC
     hi_unref_param(ui_arg);
 #else
     init_timer(pst_timer);

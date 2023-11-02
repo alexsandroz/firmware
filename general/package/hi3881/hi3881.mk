@@ -5,7 +5,7 @@
 ################################################################################
 
 define HI3881_EXTRACT_CMDS
-	cp -avr $(HI3881_PKGDIR)/* $(@D)/
+	cp -ar $(HI3881_PKGDIR)/* $(@D)/
 endef
 
 $(eval $(kernel-module))

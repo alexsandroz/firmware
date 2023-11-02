@@ -32,7 +32,8 @@
 #include <asm/param.h>
 #include <linux/timer.h>
 #include <linux/sched.h>
-#include <linux/sched/signal.h>
+//#include <linux/sched/signal.h> MOD_OPENIPC
+#include <linux/signal.h>
 #include <linux/version.h>
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 19, 0))
 #include <uapi/linux/sched/types.h>
