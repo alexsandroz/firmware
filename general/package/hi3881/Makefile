@@ -55,10 +55,13 @@ HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/model/network/common/netdevice
 HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/include/platform
 HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/core/host/include
 HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/core/shared/include
+HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/core/manager/include
+HDF_WIFI_INCS  +=-I$(PWD)/src/hdf/framework/support/platform/include
 EXTRA_CFLAGS   += $(HDF_WIFI_INCS)
 
 ############################## Generic ####################################
 
+hi3881-objs += src/hdf/framework/model/network/wifi/core/components/eapol/eapol.o
 hi3881-objs += src/hdf/framework/model/network/wifi/core/components/softap/ap.o
 hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/hdf_wifi_event.o 
 hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/hdf_wlan_config_parser.o
@@ -69,23 +72,42 @@ hi3881-objs += src/hdf/framework/model/network/common/netdevice/net_device.o
 hi3881-objs += src/hdf/framework/model/network/wifi/core/hdf_wifi_core.o
 hi3881-objs += src/hdf/framework/model/network/wifi/module/wifi_module.o
 hi3881-objs += src/hdf/framework/model/network/wifi/module/wifi_base.o
+hi3881-objs += src/hdf/framework/model/network/wifi/module/wifi_feature.o
 hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/message/sidecar.o
 hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/message/message_router.o
+hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/message/message_dispatcher.o
+hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/message/nodes/local_node.o
+hi3881-objs += src/hdf/framework/model/network/wifi/platform/src/hdf_wlan_priority_queue.o
 hi3881-objs += src/hdf/framework/ability/sbuf/src/hdf_sbuf.o
 hi3881-objs += src/hdf/framework/ability/sbuf/src/hdf_sbuf_impl_raw.o
 hi3881-objs += src/hdf/framework/core/host/src/devsvc_manager_clnt.o
+hi3881-objs += src/hdf/framework/core/manager/src/devmgr_service.o
+hi3881-objs += src/hdf/framework/support/platform/src/gpio_if.o
+hi3881-objs += src/hdf/framework/support/platform/src/gpio_core.o
+hi3881-objs += src/hdf/framework/utils/src/hdf_slist.o
 hi3881-objs += src/bounds_checking_function/src/vsprintf_s.o
 hi3881-objs += src/bounds_checking_function/src/strcpy_s.o
 hi3881-objs += src/bounds_checking_function/src/strncpy_s.o
+hi3881-objs += src/bounds_checking_function/src/snprintf_s.o
+hi3881-objs += src/bounds_checking_function/src/vsnprintf_s.o
+hi3881-objs += src/bounds_checking_function/src/strcat_s.o
 hi3881-objs += src/bounds_checking_function/src/memset_s.o
 hi3881-objs += src/bounds_checking_function/src/memcpy_s.o
 hi3881-objs += src/bounds_checking_function/src/memmove_s.o
+hi3881-objs += src/bounds_checking_function/src/secureprintoutput_a.o
+hi3881-objs += src/hdf/khdf/model/network/wifi/platform/src/hdf_wlan_queue.o
+hi3881-objs += src/hdf/khdf/platform/spi/hi35xx_spi_adapter.o
+hi3881-objs += src/hdf/khdf/network/src/net_device_adapter.o
 hi3881-objs += src/hdf/khdf/network/src/netbuf_adapter.o
+hi3881-objs += src/hdf/khdf/platform/gpio/gpio_adapter.o
 hi3881-objs += src/hdf/khdf/osal/src/osal_thread.o
 hi3881-objs += src/hdf/khdf/osal/src/osal_time.o
 hi3881-objs += src/hdf/khdf/osal/src/osal_mutex.o
 hi3881-objs += src/hdf/khdf/osal/src/osal_mem.o
-
+hi3881-objs += src/hdf/khdf/osal/src/osal_sem.o
+hi3881-objs += src/hdf/khdf/osal/src/osal_spinlock.o
+hi3881-objs += src/hdf/khdf/osal/src/osal_deal_log_format.o
+hi3881-objs += src/hdf/khdf/platform/gpio/gpio_adapter.o
 ############################## Plataform ###################################
 OAL_PATH := src/oal/
 ADPATER_PATH := src/hdfadapt/
