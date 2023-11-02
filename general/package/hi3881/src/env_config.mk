@@ -14,8 +14,8 @@ CFG_ALG_CFG = n
 CFG_HCC_TASK = y
 ########################flash cut begin########################
 ######## CFG_XXX_ROM can't be set to n ########
-CFG_P2P = y
-CFG_P2P_ROM = y
+CFG_P2P = n
+CFG_P2P_ROM = n
 CFG_WAPI = n
 CFG_WAPI_ROM = y
 CFG_WOW = y

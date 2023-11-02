@@ -286,7 +286,8 @@ hi_u32 wal_del_p2p_group(const mac_device_stru *mac_dev)
     hmac_vap_stru       *hmac_vap = HI_NULL;
     oal_net_device_stru *netdev   = HI_NULL;
 
-    for (hi_u8 vap_idx = 0; vap_idx < mac_dev->vap_num; vap_idx++) {
+    hi_u8 vap_idx;
+    for (vap_idx = 0; vap_idx < mac_dev->vap_num; vap_idx++) {
         mac_vap = mac_vap_get_vap_stru(mac_dev->auc_vap_id[vap_idx]);
         if (oal_unlikely(mac_vap == HI_NULL)) {
             oam_warning_log1(0, OAM_SF_P2P, "{wal_del_p2p_group::mac vap Err! vapId = %u}",
