@@ -1,4 +1,5 @@
 config BR2_PACKAGE_HI3881
 	bool "hi3881"
+	depends on BR2_LINUX_KERNEL
 	help
 	  hi3881 - Wifi Driver Hi3881
