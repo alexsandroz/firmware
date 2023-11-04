@@ -114,6 +114,11 @@ hi3881-objs += src/hdf/framework/core/manager/src/device_token_clnt.o
 hi3881-objs += src/hdf/framework/core/manager/src/devhost_service_clnt.o
 hi3881-objs += src/hdf/framework/core/shared/src/hdf_device_info.o
 hi3881-objs += src/hdf/framework/core/shared/src/hdf_object_manager.o
+hi3881-objs += src/hdf/framework/core/common/src/devlite_object_config.o
+hi3881-objs += src/hdf/framework/core/manager/src/devsvc_manager.o
+hi3881-objs += src/hdf/framework/core/common/src/hdf_device_node_ext.o
+hi3881-objs += src/hdf/framework/core/shared/src/hdf_service_record.o
+
 hi3881-objs += src/hdf/framework/core/shared/src/hdf_io_service.o
 hi3881-objs += src/hdf/framework/core/common/src/hdf_attribute.o
 hi3881-objs += src/hdf/framework/core/common/src/load_driver_entry.o
