@@ -118,8 +118,8 @@ hi3881-objs += src/hdf/framework/core/common/src/devlite_object_config.o
 hi3881-objs += src/hdf/framework/core/manager/src/devsvc_manager.o
 hi3881-objs += src/hdf/framework/core/common/src/hdf_device_node_ext.o
 hi3881-objs += src/hdf/framework/core/shared/src/hdf_service_record.o
-
 hi3881-objs += src/hdf/framework/core/shared/src/hdf_io_service.o
+hi3881-objs += src/hdf/framework/core/common/src/hdf_hcs_hex.o
 hi3881-objs += src/hdf/framework/core/common/src/hdf_attribute.o
 hi3881-objs += src/hdf/framework/core/common/src/load_driver_entry.o
 hi3881-objs += src/hdf/framework/core/common/src/devmgr_service_start.o
@@ -169,8 +169,8 @@ hi3881-objs += src/hdf/khdf/osal/src/osal_mem.o
 hi3881-objs += src/hdf/khdf/osal/src/osal_sem.o
 hi3881-objs += src/hdf/khdf/osal/src/osal_spinlock.o
 hi3881-objs += src/hdf/khdf/osal/src/osal_deal_log_format.o
-hi3881-objs += src/hdf/khdf/platform/gpio/gpio_adapter.o
 hi3881-objs += src/hdf/khdf/osal/src/osal_cdev.o
+hi3881-objs += src/hdf/khdf/manager/src/devmgr_load.o
 hi3881-objs += src/core/hdf_wlan_sdio_adapt.o
 
 ############################## Plataform ###################################
