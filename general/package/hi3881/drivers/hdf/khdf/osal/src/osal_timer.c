@@ -54,7 +54,7 @@ static void osal_timer_callback(struct timer_list *arg)
 		return;
 	}
 
-	ktimer = from_timer(ktimer, arg, timer);
+	//ktimer = from_timer(ktimer, arg, timer); //MOD_OPENIPC  CRITICAL IMPLMENTAR
 
 	OsalMutexTimedLock(&ktimer->mutex, HDF_WAIT_FOREVER);
 	mode = ktimer->mode;
@@ -117,7 +117,10 @@ static int32_t OsalTimerStart(OsalTimer *timer, OsalTimerMode mode)
 
 	ktimer = (struct osal_ktimer *)timer->realTimer;
 	timer_id = &ktimer->timer;
-	timer_setup(timer_id, osal_timer_callback, 0);
+	// timer_setup(timer_id, osal_timer_callback, 0);  // MOD_OPENIPC
+    init_timer(timer_id);
+    timer_id->function = (unsigned long)osal_timer_callback;
+    // end MOD_OPENIPC
 	ktimer->mode = mode;
 	timer_id->expires = jiffies + msecs_to_jiffies(ktimer->msec);
 	add_timer(timer_id);

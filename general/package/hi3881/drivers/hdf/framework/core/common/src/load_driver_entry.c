@@ -14,6 +14,7 @@ static struct HdfDriverEntry *HdfDriverEntryConstruct(int32_t *driverCount)
 {
     int i;
     *driverCount = (int32_t)(((uint8_t *)(HDF_DRIVER_END()) - (uint8_t *)(HDF_DRIVER_BEGIN())) / sizeof(size_t));
+    *driverCount = 1;
     if (*driverCount <= 0) {
         HDF_LOGE("%s: failed to hdf get device counts", __func__);
         return NULL;

@@ -158,3 +158,4 @@ int32_t HdfWlanConfigSDIO(uint8_t busId)
     HDF_LOGE("%s: platform chip not supported!", __func__);
     return HDF_FAILURE;
 }
+MODULE_LICENSE("GPL");

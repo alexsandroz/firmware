@@ -11,3 +11,29 @@ diff --git a/arch/arm/kernel/vmlinux.lds.S b/arch/arm/kernel/vmlinux.lds.S
 +	}
 	.init.data : {
 		INIT_DATA
+
+diff --git a/drivers/Kconfig b/drivers/Kconfig
+--- a/drivers/Kconfig
++++ b/drivers/Kconfig
+@@ -211,3 +211,5 @@ 
+ source "drivers/hi_vdmav100/Kconfig"
+
++source "drivers/hdf/khdf/Kconfig"
++
+ endmenu
+
+diff --git a/drivers/Makefile b/drivers/Makefile
+--- a/drivers/Makefile
++++ b/drivers/Makefile
+@@ -181,2 +181,3 @@ 
+ obj-$(CONFIG_ARCH_HISI_BVT)	+= hisilicon/
+ obj-$(CONFIG_HI_VDMA_V100) += hi_vdmav100/
++obj-$(CONFIG_DRIVERS_HDF)	+= hdf/
+
+diff --git a/drivers/hdf b/drivers/hdf
+new file mode 120000
+--- /dev/null
++++ b/drivers/hdf/khdf
+@@ -0,0 +1 @@
++../../hi3881/drivers/hdf
+\ No newline at end of file

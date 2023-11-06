@@ -12,16 +12,14 @@
 #
 #
 
-obj-y  += ../../../../framework/ability/config/device_resource_if.o \
-          ../../../../framework/ability/config/hcs_parser/src/hcs_blob_if.o \
-          ../../../../framework/ability/config/hcs_parser/src/hcs_generate_tree.o \
-          ../../../../framework/ability/config/hcs_parser/src/hcs_parser.o \
-          ../../../../framework/ability/config/hcs_parser/src/hcs_tree_if.o
-ccflags-y += -Iinclude/hdf \
-             -Iinclude/hdf/osal \
-             -Iinclude/hdf/utils \
-             -Idrivers/hdf/khdf/osal/include \
+obj-y  += ../../framework/ability/config/device_resource_if.o \
+          ../../framework/ability/config/hcs_parser/src/hcs_blob_if.o \
+          ../../framework/ability/config/hcs_parser/src/hcs_generate_tree.o \
+          ../../framework/ability/config/hcs_parser/src/hcs_parser.o \
+          ../../framework/ability/config/hcs_parser/src/hcs_tree_if.o
+ccflags-y += -Idrivers/hdf/khdf/osal/include \
              -Idrivers/hdf/framework/include \
+             -Idrivers/hdf/framework/include/osal \
              -Idrivers/hdf/framework/include/utils \
              -Idrivers/hdf/framework/include/config \
              -Idrivers/hdf/framework/ability/config/hcs_parser/include

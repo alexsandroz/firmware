@@ -288,6 +288,3 @@ struct HdfDriverEntry g_gpioLinuxDriverEntry = {
     .moduleName = "linux_gpio_adapter",
 };
 HDF_INIT(g_gpioLinuxDriverEntry);
-
-#include <linux/module.h>
-MODULE_LICENSE("GPL");
