@@ -5,7 +5,6 @@ config BR2_PACKAGE_HI3881
 	depends on DRIVERS_HDF_PLATFORM
 	depends on DRIVERS_HDF_PLATFORM_SDIO
 	depends on DRIVERS_HDF_PLATFORM_MMC
-	depends on HIMCI
 	depends on DRIVERS_HDF_STORAGE
 	depends on DRIVERS_HDF_WIFI
 	help

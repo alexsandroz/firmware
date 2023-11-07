@@ -41,17 +41,17 @@ new file mode 120000
 \ No newline at end of file
 
 diff --git a/drivers/mmc/host/himci/himci.c b/drivers/mmc/host/himci/himci.c
---- b/drivers/mmc/host/himci/himci.c
-+++ b/drivers/mmc/host/himci/himci.c
-@@ -2458,5 +2458,21 @@
- 	platform_driver_unregister(&himci_driver);
+--- b/drivers/mmc/host/mci_proc.c
++++ b/drivers/mmc/host/mci_proc.c
+@@ -281,2 +281,18 @@
+    return 0;
  }
 +
 +struct mmc_host *himci_get_mmc_host(int slot)
 +{
-+	struct himci_host *host = NULL;
++	struct mmc_host *host = NULL;
 +
-+	if (slot >= HIMCI_SLOT_NUM || slot < 0) {
++	if (slot >= MCI_SLOT_NUM || slot < 0) {
 +		return NULL;
 +	}
 +
@@ -59,9 +59,6 @@ diff --git a/drivers/mmc/host/himci/himci.c b/drivers/mmc/host/himci/himci.c
 +	if (host == NULL) {
 +		return NULL;
 +	}
-+	return host->mmc;
++	return host;
 +}
 +EXPORT_SYMBOL(himci_get_mmc_host);
-
- module_init(himci_init);
- module_exit(himci_exit);
