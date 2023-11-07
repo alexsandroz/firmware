@@ -14,5 +14,5 @@
 
 include drivers/hdf/khdf/platform/platform.mk
 
-obj-y  += $(HDF_PLATFORM_FRAMEWORKS_ROOT)/src/mmc/sdio_if.o \
-          ./sdio_adapter.o
+obj-y  += ../../../framework/support/platform/src/mmc/sdio_if.o \
+          sdio_adapter.o

@@ -283,7 +283,8 @@ static int32_t Hi35xxLinuxSdioFlushData(struct SdioDevice *dev)
         return HDF_ERR_INVALID_OBJECT;
     }
 
-    return mmc_sw_reset(func->card->host);
+    //return mmc_sw_reset(func->card->host);  MOD_OPENIPC
+    return mmc_hw_reset(func->card->host);  
 }
 
 static int32_t Hi35xxLinuxSdioClaimHost(struct SdioDevice *dev)

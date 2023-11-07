@@ -12,15 +12,24 @@
 #
 #
 
-HDF_PLATFORM_FRAMEWORKS_ROOT = ../../../../../framework/support/platform
-ccflags-$(CONFIG_DRIVERS_HDF_PLATFORM) += -Idrivers/hdf/framework/include/platform \
+HDF_PLATAFORM_CFLAGS +=-D_PRE_OS_VERSION_LINUX=1
+HDF_PLATAFORM_CFLAGS +=-D_PRE_OS_VERSION_LITEOS=2
+ifeq ($(CFG_LITEOS), y)
+HDF_PLATAFORM_CFLAGS +=-D_PRE_OS_VERSION=_PRE_OS_VERSION_LITEOS
+else
+HDF_PLATAFORM_CFLAGS +=-D_PRE_OS_VERSION=_PRE_OS_VERSION_LINUX
+endif
+HDF_PLATAFORM_CFLAGS +=-D_PRE_HDF_LINUX
+
+
+ccflags-$(CONFIG_DRIVERS_HDF_PLATFORM) += \
+    $(HDF_PLATAFORM_CFLAGS) \
+    -Idrivers/hdf/framework/include/platform \
+    -Idrivers/hdf/framework/include/osal \
     -Idrivers/hdf/framework/support/platform/include \
     -Idrivers/hdf/framework/support/platform/include/mmc \
     -Idrivers/hdf/framework/support/platform/include/common \
     -Idrivers/hdf/framework/model/storage/include/common \
-    -Iinclude/hdf \
-    -Iinclude/hdf/osal \
-    -Iinclude/hdf/utils \
     -Idrivers/hdf/khdf/osal/include \
     -Idrivers/hdf/framework/include \
     -Idrivers/hdf/framework/include/utils \
@@ -33,4 +42,4 @@ ccflags-$(CONFIG_DRIVERS_HDF_PLATFORM) += -Idrivers/hdf/framework/include/platfo
     -Idrivers/hdf/framework/core/common/include/host \
     -Idrivers/hdf/framework/ability/sbuf/include \
     -Idrivers/hdf/framework/utils/include \
-    -I$(PROJECT_ROOT)/third_party/bounds_checking_function/include
+    -Idrivers/hdf/bounds_checking_function/include

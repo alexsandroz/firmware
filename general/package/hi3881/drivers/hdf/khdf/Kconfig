@@ -14,5 +14,5 @@ config HDF_SUPPORT_LEVEL
       Answer 1 on OHOS L1, 2 on OHOS L2, etc
 
 source "drivers/hdf/khdf/platform/Kconfig"
+source "drivers/hdf/khdf/model/storage/Kconfig"
 source "drivers/hdf/khdf/model/network/wifi/Kconfig"
-source "drivers/hdf/khdf/model/network/bluetooth/Kconfig"

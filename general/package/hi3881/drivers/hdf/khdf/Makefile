@@ -12,17 +12,18 @@
 #
 #
 
-export HDF_ROOT := drivers/hdf
+obj-$(CONFIG_DRIVERS_HDF) += core/hdf_hcs_hex.o 
+
 obj-$(CONFIG_DRIVERS_HDF)  += osal/
 obj-$(CONFIG_DRIVERS_HDF)  += network/
 obj-$(CONFIG_DRIVERS_HDF)  += config/
 
 SUPPORT_LEVEL_STD_H := $(shell [ "$(CONFIG_HDF_SUPPORT_LEVEL)" -ge 2 ] && echo true)
 
-$(warning PRODUCT_PATH=$(PRODUCT_PATH))
-ifeq ($(PRODUCT_PATH),)
-#$(error PRODUCT_PATH not)
-endif
+# $(warning PRODUCT_PATH=$(PRODUCT_PATH))
+# ifeq ($(PRODUCT_PATH),)
+# $(error PRODUCT_PATH not)
+# endif
 
 # for L2+, hcs config should in vendor/product_company/product_name/config/khdf
 ifeq ($(SUPPORT_LEVEL_STD_H), true)
@@ -40,4 +41,5 @@ endif
 
 obj-$(CONFIG_DRIVERS_HDF) += manager/
 obj-$(CONFIG_DRIVERS_HDF_PLATFORM) += platform/
+obj-$(CONFIG_DRIVERS_HDF_STORAGE) += model/storage/
 obj-$(CONFIG_DRIVERS_HDF_WIFI) += model/network/wifi/

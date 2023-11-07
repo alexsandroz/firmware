@@ -12,8 +12,13 @@
 #
 #
 
-include drivers/hdf/khdf/platform/platform.mk
+obj-$(CONFIG_DRIVERS_HDF_WIFI)  += net_device_adapter.o netbuf_adapter.o
 
-obj-y  += ../../../framework/support/platform/src/gpio_core.o \
-          ../../../framework/support/platform/src/gpio_if.o \
-          gpio_adapter.o
+ccflags-$(CONFIG_DRIVERS_HDF_WIFI) += \
+             -Idrivers/hdf/framework/model/network/common/netdevice \
+             -Idrivers/hdf/framework/include/net \
+             -Idrivers/hdf/framework/include/utils \
+             -Idrivers/hdf/khdf/network/include \
+             -Idrivers/hdf/khdf/osal/include \
+             -Idrivers/hdf/framework/include/osal \
+             -Idrivers/hdf/bounds_checking_function/include 

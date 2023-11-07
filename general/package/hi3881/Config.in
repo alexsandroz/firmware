@@ -1,5 +1,12 @@
 config BR2_PACKAGE_HI3881
 	bool "hi3881"
 	depends on BR2_LINUX_KERNEL
+	depends on DRIVERS_HDF
+	depends on DRIVERS_HDF_PLATFORM
+	depends on DRIVERS_HDF_PLATFORM_SDIO
+	depends on DRIVERS_HDF_PLATFORM_MMC
+	depends on HIMCI
+	depends on DRIVERS_HDF_STORAGE
+	depends on DRIVERS_HDF_WIFI
 	help
 	  hi3881 - Wifi Driver Hi3881

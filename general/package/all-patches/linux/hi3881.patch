@@ -25,10 +25,12 @@ diff --git a/drivers/Kconfig b/drivers/Kconfig
 diff --git a/drivers/Makefile b/drivers/Makefile
 --- a/drivers/Makefile
 +++ b/drivers/Makefile
-@@ -181,2 +181,3 @@ 
+@@ -181,2 +181,5 @@ 
  obj-$(CONFIG_ARCH_HISI_BVT)	+= hisilicon/
  obj-$(CONFIG_HI_VDMA_V100) += hi_vdmav100/
++ifeq ($(CONFIG_DRIVERS_HDF),y)
 +obj-$(CONFIG_DRIVERS_HDF)	+= hdf/
++endif
 
 diff --git a/drivers/hdf b/drivers/hdf
 new file mode 120000
@@ -37,3 +39,29 @@ new file mode 120000
 @@ -0,0 +1 @@
 +../../hi3881/drivers/hdf
 \ No newline at end of file
+
+diff --git a/drivers/mmc/host/himci/himci.c b/drivers/mmc/host/himci/himci.c
+--- b/drivers/mmc/host/himci/himci.c
++++ b/drivers/mmc/host/himci/himci.c
+@@ -2458,5 +2458,21 @@
+ 	platform_driver_unregister(&himci_driver);
+ }
++
++struct mmc_host *himci_get_mmc_host(int slot)
++{
++	struct himci_host *host = NULL;
++
++	if (slot >= HIMCI_SLOT_NUM || slot < 0) {
++		return NULL;
++	}
++
++	host = mci_host[slot];
++	if (host == NULL) {
++		return NULL;
++	}
++	return host->mmc;
++}
++EXPORT_SYMBOL(himci_get_mmc_host);
+
+ module_init(himci_init);
+ module_exit(himci_exit);

@@ -52,20 +52,13 @@ enum MmcCmdCode {
     SWITCH = 6,            /* Switches the mode of operation of the selected card or modifies the EXT_CSD registers. */
     SELECT_CARD = 7,  /*
                        * command toggles a card between the stand-by and transfer states or between the programming and
-                       * disconnect states. In both cases the card is selected by its own relative address and gets
-                       * deselected by any other address; address 0 deselects all.
                        */
     SEND_EXT_CSD = 8, /* The card sends its EXT_CSD register as a block of data. */
     SEND_CSD = 9,     /* addressed card sends its card-specific data (CSD) on the CMD line. */
     SEND_CID = 10,    /* addressed card sends its card identification (CID) on CMD the line. */
     READ_DAT_UNTIL_STOP = 11, /*
-                               * reads data stream from the card, starting at the given address,
-                               * until a STOP_TRANSMISSION follows.
                                */
     STOP_TRANSMISSION = 12, /*
-                             * Terminates a read/write stream/multiple block operation.
-                             * When CMD12 is used to terminate a read transaction the card will respond with R1.
-                             * When it is used to stop a write transaction the card will respondwith R1b.
                              */
     SEND_STATUS = 13,       /* addressed card sends its status register. */
     GO_INACTIVE_STATE = 15, /*
@@ -124,8 +117,10 @@ enum MmcCmdCode {
                              * sets the address of the last erase group within a continuous
                              * range to be selected for erase.
                              */
-    MMC_ERASE = 38,   /* erases all previously selected write blocks. */
-    MMC_FAST_IO = 39, /*
+    //MMC_ERASE = 38,   /* erases all previously selected write blocks. */  // MOD_OPENIPC
+    //MMC_FAST_IO = 39, /* // MOD_OPENIPC
+    HI_MMC_ERASE = 38,   /* erases all previously selected write blocks. */  
+    HI_MMC_FAST_IO = 39, /*
                        * used to write and read 8 bit (register) data fields. The command addresses a card and
                        * a register and provides the data for writing if the write flag is set. The R4 response
                        * contains data read from the addressed register. This command accesses application
