@@ -20,6 +20,7 @@
 struct HdfDeviceNode *HdfDriverLoaderLoadNode(
     struct IDriverLoader *loader, const struct HdfDeviceInfo *deviceInfo)
 {
+    HDF_LOGD("%s enter", __func__);
     struct HdfDriverEntry *driverEntry = NULL;
     struct HdfDeviceNode *devNode = NULL;
     if ((loader == NULL) || (loader->GetDriverEntry == NULL)) {
@@ -98,6 +99,7 @@ void HdfDriverLoaderConstruct(struct HdfDriverLoader *inst)
 
 struct HdfObject *HdfDriverLoaderCreate()
 {
+    HDF_LOGD("%s enter", __func__);
     static bool isDriverLoaderInit = false;
     static struct HdfDriverLoader driverLoader;
     if (!isDriverLoaderInit) {

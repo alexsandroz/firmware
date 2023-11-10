@@ -8,6 +8,7 @@
 
 #include "hdf_io_service.h"
 #include "hdf_vnode_adapter.h"
+#include "hdf_log.h"
 
 struct HdfIoService *HdfIoServiceBind(const char *serviceName)
 {
@@ -21,7 +22,9 @@ void HdfIoServiceRecycle(struct HdfIoService *service)
 
 struct HdfIoService *HdfIoServicePublish(const char *serviceName, uint32_t mode)
 {
+    HDF_LOGD("%s enter", __func__);
     if (HdfIoServiceAdapterPublish != NULL) {
+        HDF_LOGD("%s serviceName:%s mode:%u", __func__, serviceName, mode);
         return HdfIoServiceAdapterPublish(serviceName, mode);
     }
 

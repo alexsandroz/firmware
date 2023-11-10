@@ -102,7 +102,8 @@ static void DeviceNodeExtConstruct(struct DeviceNodeExt *inst)
 
 struct HdfObject *DeviceNodeExtCreate()
 {
-    struct DeviceNodeExt *instance =
+   HDF_LOGD("%s enter", __func__);
+   struct DeviceNodeExt *instance =
         (struct DeviceNodeExt *)OsalMemCalloc(sizeof(struct DeviceNodeExt));
     if (instance != NULL) {
         DeviceNodeExtConstruct(instance);

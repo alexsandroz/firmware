@@ -39,17 +39,18 @@ EXTRA_CFLAGS     += $(HI1131_WIFI_INCS)
 # HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/ability/sbuf/include
 # HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/include/wifi
 # HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/network/wifi/core/components/eapol 
-HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/network/wifi/core/components/softap 
-HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/network/wifi/core/components/sta 
 # HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/network/wifi/core/components/p2p 
 # HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/include/config
 # HDF_WIFI_INCS  +=-I$(PWD)/drivers/bounds_checking_function/include
 # HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/include/osal
 # HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/network/wifi/platform/include
-HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/network/wifi/platform/include/message
 # HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/network/wifi/core
 # HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/include
 # HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/network/wifi/module
+
+HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/network/wifi/core/components/softap 
+HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/network/wifi/core/components/sta 
+HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/network/wifi/platform/include/message
 HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/utils/include
 HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/network/common/netdevice
 HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/include/platform
@@ -63,7 +64,6 @@ HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/core/adapter/vnode/include
 HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/support/platform/include/mmc
 HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/support/platform/include/common
 HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/model/storage/include/common
-
 HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/include
 HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/include/osal
 HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/framework/include/net
@@ -85,7 +85,7 @@ HDF_WIFI_INCS  +=-I$(PWD)/drivers/hdf/bounds_checking_function/include
 EXTRA_CFLAGS   += $(HDF_WIFI_INCS)
 
 ############################## Generic ####################################
-
+ifeq (1,0)
 hi3881-objs += drivers/hdf/framework/model/network/wifi/core/components/eapol/eapol.o
 hi3881-objs += drivers/hdf/framework/model/network/wifi/core/components/softap/ap.o
 hi3881-objs += drivers/hdf/framework/model/network/wifi/core/components/sta/sta.o
@@ -141,8 +141,9 @@ hi3881-objs += drivers/hdf/framework/core/common/src/hdf_device_node_ext.o
 hi3881-objs += drivers/hdf/framework/core/common/src/hdf_attribute.o
 hi3881-objs += drivers/hdf/framework/core/common/src/load_driver_entry.o
 hi3881-objs += drivers/hdf/framework/core/common/src/devmgr_service_start.o
+hi3881-objs += drivers/hdf/framework/core/manager/src/hdf_driver_installer.o
 hi3881-objs += drivers/hdf/framework/core/adapter/vnode/src/hdf_vnode_adapter.o
-hi3881-objs += drivers/hdf/framework/core/adapter/vnode/src/hdf_driver_installer.o
+#hi3881-objs += drivers/hdf/framework/core/adapter/vnode/src/hdf_driver_installer.o
 hi3881-objs += drivers/hdf/framework/core/host/src/hdf_driver_loader.o
 hi3881-objs += drivers/hdf/framework/support/platform/src/gpio_if.o
 hi3881-objs += drivers/hdf/framework/support/platform/src/gpio_core.o
@@ -168,31 +169,31 @@ hi3881-objs += drivers/hdf/khdf/model/storage/storage_block_linux.o
 hi3881-objs += drivers/hdf/khdf/network/src/net_device_adapter.o
 hi3881-objs += drivers/hdf/khdf/network/src/netbuf_adapter.o
 hi3881-objs += drivers/hdf/khdf/osal/src/osal_cdev.o
-hi3881-objs += vendor/core/hdf_wlan_sdio_adapt.o
-hi3881-objs += drivers/hdf/hdf_hcs_hex.o
+hi3881-objs += drivers/hdf/khdf/core/hdf_wlan_sdio_adapt.o
+hi3881-objs += drivers/hdf/khdf/core/hdf_hcs_hex.o
 
-# hi3881-objs += drivers/hdf/khdf/platform/spi/hi35xx_spi_adapter.o
-# hi3881-objs += drivers/hdf/khdf/platform/gpio/gpio_adapter.o
-# hi3881-objs += drivers/hdf/khdf/osal/src/osal_thread.o
-# hi3881-objs += drivers/hdf/khdf/osal/src/osal_time.o
-# hi3881-objs += drivers/hdf/khdf/osal/src/osal_mutex.o
-# hi3881-objs += drivers/hdf/khdf/osal/src/osal_mem.o
-# hi3881-objs += drivers/hdf/khdf/osal/src/osal_sem.o
-# hi3881-objs += drivers/hdf/khdf/osal/src/osal_spinlock.o
-# hi3881-objs += drivers/hdf/khdf/osal/src/osal_deal_log_format.o
-# hi3881-objs += drivers/hdf/khdf/manager/src/devmgr_load.o
-# hi3881-objs += drivers/bounds_checking_function/src/vsprintf_s.o
-# hi3881-objs += drivers/bounds_checking_function/src/strcpy_s.o
-# hi3881-objs += drivers/bounds_checking_function/src/strncpy_s.o
-# hi3881-objs += drivers/bounds_checking_function/src/snprintf_s.o
-# hi3881-objs += drivers/bounds_checking_function/src/vsnprintf_s.o
-# hi3881-objs += drivers/bounds_checking_function/src/strcat_s.o
-# hi3881-objs += drivers/bounds_checking_function/src/memset_s.o
-# hi3881-objs += drivers/bounds_checking_function/src/memcpy_s.o
-# hi3881-objs += drivers/bounds_checking_function/src/memmove_s.o
-# hi3881-objs += drivers/bounds_checking_function/src/sprintf_s.o
-# hi3881-objs += drivers/bounds_checking_function/src/secureprintoutput_a.o
-
+hi3881-objs += drivers/hdf/khdf/platform/spi/hi35xx_spi_adapter.o
+hi3881-objs += drivers/hdf/khdf/platform/gpio/gpio_adapter.o
+hi3881-objs += drivers/hdf/khdf/osal/src/osal_thread.o
+hi3881-objs += drivers/hdf/khdf/osal/src/osal_time.o
+hi3881-objs += drivers/hdf/khdf/osal/src/osal_mutex.o
+hi3881-objs += drivers/hdf/khdf/osal/src/osal_mem.o
+hi3881-objs += drivers/hdf/khdf/osal/src/osal_sem.o
+hi3881-objs += drivers/hdf/khdf/osal/src/osal_spinlock.o
+hi3881-objs += drivers/hdf/khdf/osal/src/osal_deal_log_format.o
+hi3881-objs += drivers/hdf/khdf/manager/src/devmgr_load.o
+hi3881-objs += drivers/hdf/bounds_checking_function/src/vsprintf_s.o
+hi3881-objs += drivers/hdf/bounds_checking_function/src/strcpy_s.o
+hi3881-objs += drivers/hdf/bounds_checking_function/src/strncpy_s.o
+hi3881-objs += drivers/hdf/bounds_checking_function/src/snprintf_s.o
+hi3881-objs += drivers/hdf/bounds_checking_function/src/vsnprintf_s.o
+hi3881-objs += drivers/hdf/bounds_checking_function/src/strcat_s.o
+hi3881-objs += drivers/hdf/bounds_checking_function/src/memset_s.o
+hi3881-objs += drivers/hdf/bounds_checking_function/src/memcpy_s.o
+hi3881-objs += drivers/hdf/bounds_checking_function/src/memmove_s.o
+hi3881-objs += drivers/hdf/bounds_checking_function/src/sprintf_s.o
+hi3881-objs += drivers/hdf/bounds_checking_function/src/secureprintoutput_a.o
+endif
 
 ############################## Plataform ###################################
 OAL_PATH := vendor/oal/

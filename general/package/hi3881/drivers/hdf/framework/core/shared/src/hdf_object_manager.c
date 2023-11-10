@@ -7,12 +7,15 @@
  */
 
 #include "hdf_object_manager.h"
+#include "hdf_log.h"
 
 struct HdfObject *HdfObjectManagerGetObject(int objectId)
 {
+    HDF_LOGD("%s enter", __func__);
     struct HdfObject *object = NULL;
     const struct HdfObjectCreator *targetCreator = HdfObjectManagerGetCreators(objectId);
     if ((targetCreator != NULL) && (targetCreator->Create != NULL)) {
+        
         object = targetCreator->Create();
         if (object != NULL) {
             object->objectId = objectId;

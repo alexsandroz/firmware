@@ -37,6 +37,7 @@ static void DriverInstallerConstruct(struct DriverInstaller *inst)
 
 struct HdfObject *DriverInstallerCreate(void)
 {
+    HDF_LOGD("%s enter", __func__);
     static bool isDriverInstInit = false;
     static struct DriverInstaller driverInstaller;
     if (!isDriverInstInit) {

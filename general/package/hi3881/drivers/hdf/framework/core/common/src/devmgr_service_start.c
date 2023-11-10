@@ -16,7 +16,7 @@
 #include "hdf_log.h"
 #include "hdf_sbuf.h"
 
-#define DEV_MGR_NODE_PERM 0660
+#define DEV_MGR_NODE_PERM 0666
 
 static int g_isQuickLoad = DEV_MGR_SLOW_LOAD;
 
@@ -107,6 +107,7 @@ int DeviceManagerIsQuickLoad(void)
 
 int DeviceManagerStart(void)
 {
+    HDF_LOGD("%s enter", __func__);
     struct IDevmgrService *instance = DevmgrServiceGetInstance();
 
     if (instance == NULL || instance->StartService == NULL) {

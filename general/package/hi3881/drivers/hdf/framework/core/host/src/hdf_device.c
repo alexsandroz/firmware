@@ -47,6 +47,7 @@ void HdfDeviceDestruct(struct HdfDevice *device)
 
 struct HdfObject *HdfDeviceCreate()
 {
+    HDF_LOGD("%s enter", __func__);
     struct HdfDevice *device =
         (struct HdfDevice *)OsalMemCalloc(sizeof(struct HdfDevice));
     if (device != NULL) {

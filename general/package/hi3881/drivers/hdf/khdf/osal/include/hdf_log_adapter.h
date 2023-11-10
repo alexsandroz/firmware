@@ -38,15 +38,15 @@ bool deal_format(const char *fmt, char *str, size_t size);
 			printk(tmp_fmt, ##args); \
 	} while (0)
 
-#define HDF_LOGV_WRAPPER(fmt, args...) HDF_LOG_WRAPPER(KERN_DEBUG HDF_FMT_TAG(HDF_LOG_TAG, V) fmt "\r\n", ## args)
+#define HDF_LOGV_WRAPPER(fmt, args...) HDF_LOG_WRAPPER(KERN_DEBUG HDF_FMT_TAG(HDF_LOG_TAG, V) fmt "\n", ## args)
 
-#define HDF_LOGD_WRAPPER(fmt, args...) HDF_LOG_WRAPPER(KERN_DEBUG HDF_FMT_TAG(HDF_LOG_TAG, D) fmt "\r\n", ## args)
+#define HDF_LOGD_WRAPPER(fmt, args...) HDF_LOG_WRAPPER(KERN_DEBUG HDF_FMT_TAG(HDF_LOG_TAG, D) fmt "\n", ## args)
 
-#define HDF_LOGI_WRAPPER(fmt, args...) HDF_LOG_WRAPPER(KERN_INFO HDF_FMT_TAG(HDF_LOG_TAG, I) fmt "\r\n", ## args)
+#define HDF_LOGI_WRAPPER(fmt, args...) HDF_LOG_WRAPPER(KERN_INFO HDF_FMT_TAG(HDF_LOG_TAG, I) fmt "\n", ## args)
 
-#define HDF_LOGW_WRAPPER(fmt, args...) HDF_LOG_WRAPPER(KERN_WARNING HDF_FMT_TAG(HDF_LOG_TAG, W) fmt "\r\n", ## args)
+#define HDF_LOGW_WRAPPER(fmt, args...) HDF_LOG_WRAPPER(KERN_WARNING HDF_FMT_TAG(HDF_LOG_TAG, W) fmt "\n", ## args)
 
-#define HDF_LOGE_WRAPPER(fmt, args...) HDF_LOG_WRAPPER(KERN_ERR HDF_FMT_TAG(HDF_LOG_TAG, E) fmt "\r\n", ## args)
+#define HDF_LOGE_WRAPPER(fmt, args...) HDF_LOG_WRAPPER(KERN_ERR HDF_FMT_TAG(HDF_LOG_TAG, E) fmt "\n", ## args)
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

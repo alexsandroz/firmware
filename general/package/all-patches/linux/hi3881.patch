@@ -12,53 +12,27 @@ diff --git a/arch/arm/kernel/vmlinux.lds.S b/arch/arm/kernel/vmlinux.lds.S
 	.init.data : {
 		INIT_DATA
 
-diff --git a/drivers/Kconfig b/drivers/Kconfig
---- a/drivers/Kconfig
-+++ b/drivers/Kconfig
-@@ -211,3 +211,5 @@ 
- source "drivers/hi_vdmav100/Kconfig"
-
-+source "drivers/hdf/khdf/Kconfig"
-+
- endmenu
-
 diff --git a/drivers/Makefile b/drivers/Makefile
 --- a/drivers/Makefile
 +++ b/drivers/Makefile
-@@ -181,2 +181,5 @@ 
+@@ -181,2 +181,6 @@ 
  obj-$(CONFIG_ARCH_HISI_BVT)	+= hisilicon/
  obj-$(CONFIG_HI_VDMA_V100) += hi_vdmav100/
-+ifeq ($(CONFIG_DRIVERS_HDF),y)
-+obj-$(CONFIG_DRIVERS_HDF)	+= hdf/
-+endif
++#ifeq ($(CONFIG_DRIVERS_HDF),y)
++obj-y	+= hdf/hdf_adapt.o
++#endif
++#error stop
 
-diff --git a/drivers/hdf b/drivers/hdf
-new file mode 120000
+diff --git a/drivers/hdf/hdf_adapt.c b/drivers/hdf/hdf_adapt.c
+new file mode 100644
 --- /dev/null
-+++ b/drivers/hdf/khdf
-@@ -0,0 +1 @@
-+../../hi3881/drivers/hdf
-\ No newline at end of file
-
-diff --git a/drivers/mmc/host/himci/himci.c b/drivers/mmc/host/himci/himci.c
---- b/drivers/mmc/host/mci_proc.c
-+++ b/drivers/mmc/host/mci_proc.c
-@@ -281,2 +281,18 @@
-    return 0;
- }
++++ b/drivers/hdf/hdf_adapt.c
+@@ -0,0 +0,8 @@ 
++#include <stddef.h>
++#include <linux/module.h>
 +
-+struct mmc_host *himci_get_mmc_host(int slot)
-+{
-+	struct mmc_host *host = NULL;
++extern size_t _hdf_drivers_start;
++EXPORT_SYMBOL(_hdf_drivers_start);
 +
-+	if (slot >= MCI_SLOT_NUM || slot < 0) {
-+		return NULL;
-+	}
-+
-+	host = mci_host[slot];
-+	if (host == NULL) {
-+		return NULL;
-+	}
-+	return host;
-+}
-+EXPORT_SYMBOL(himci_get_mmc_host);
++extern size_t _hdf_drivers_end;
++EXPORT_SYMBOL(_hdf_drivers_end);

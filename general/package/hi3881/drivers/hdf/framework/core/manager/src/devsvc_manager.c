@@ -143,6 +143,7 @@ bool DevSvcManagerConstruct(struct DevSvcManager *inst)
 
 struct HdfObject *DevSvcManagerCreate()
 {
+    HDF_LOGD("%s enter", __func__);
     static bool isDevSvcManagerInit = false;
     static struct DevSvcManager devSvcManagerInstance;
     if (!isDevSvcManagerInit) {

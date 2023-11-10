@@ -237,6 +237,7 @@ void DevHostServiceDestruct(struct DevHostService *service)
 
 struct HdfObject *DevHostServiceCreate()
 {
+    HDF_LOGD("%s enter", __func__);
     struct DevHostService *devHostService = (struct DevHostService *)OsalMemCalloc(sizeof(struct DevHostService));
     if (devHostService != NULL) {
         DevHostServiceConstruct(devHostService);

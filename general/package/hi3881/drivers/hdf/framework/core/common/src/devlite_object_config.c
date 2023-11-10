@@ -15,6 +15,7 @@
 #include "hdf_device_token.h"
 #include "hdf_driver_installer.h"
 #include "hdf_driver_loader.h"
+#include "hdf_log.h"
 
 static const struct HdfObjectCreator g_liteObjectCreators[] = {
     [HDF_OBJECT_ID_DEVMGR_SERVICE] =
@@ -61,6 +62,7 @@ static const struct HdfObjectCreator g_liteObjectCreators[] = {
 
 const struct HdfObjectCreator *HdfObjectManagerGetCreators(int objectId)
 {
+    HDF_LOGD("%s enter", __func__);
     int numConfigs = sizeof(g_liteObjectCreators) / sizeof(g_liteObjectCreators[0]);
     if ((objectId >= 0) && (objectId < numConfigs)) {
         return &g_liteObjectCreators[objectId];

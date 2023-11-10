@@ -16,11 +16,13 @@
 
 static int DriverInstallerStartDeviceHost(uint32_t devHostId, const char *devHostName)
 {
+    HDF_LOGD("%s enter", __func__);
     struct IDevHostService *hostServiceIf = DevHostServiceNewInstance(devHostId, devHostName);
     if ((hostServiceIf == NULL) || (hostServiceIf->StartService == NULL)) {
         HDF_LOGE("hostServiceIf or hostServiceIf->StartService is null");
         return HDF_FAILURE;
     }
+    HDF_LOGD("%s devHostName:%s", __func__, devHostName);
     int ret = hostServiceIf->StartService(hostServiceIf);
     if (ret != HDF_SUCCESS) {
         HDF_LOGE("failed to start host service, ret: %d", ret);
@@ -37,6 +39,7 @@ static void DriverInstallerConstruct(struct DriverInstaller *inst)
 
 struct HdfObject *DriverInstallerCreate(void)
 {
+    HDF_LOGD("%s enter", __func__);
     static bool isDriverInstInit = false;
     static struct DriverInstaller driverInstaller;
     if (!isDriverInstInit) {

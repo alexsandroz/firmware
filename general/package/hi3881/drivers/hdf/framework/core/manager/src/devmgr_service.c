@@ -290,6 +290,7 @@ bool DevmgrServiceConstruct(struct DevmgrService *inst)
 
 struct HdfObject *DevmgrServiceCreate()
 {
+    HDF_LOGD("%s enter", __func__);
     static bool isDevMgrServiceInit = false;
     static struct DevmgrService devmgrServiceInstance;
     if (!isDevMgrServiceInit) {
@@ -303,6 +304,7 @@ struct HdfObject *DevmgrServiceCreate()
 
 struct IDevmgrService *DevmgrServiceGetInstance()
 {
+    HDF_LOGD("%s enter", __func__);
     static struct IDevmgrService *instance = NULL;
     if (instance == NULL) {
         instance = (struct IDevmgrService *)HdfObjectManagerGetObject(HDF_OBJECT_ID_DEVMGR_SERVICE);

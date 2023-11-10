@@ -9,6 +9,7 @@
 #include "hdf_device_token.h"
 #include "hdf_object_manager.h"
 #include "osal_mem.h"
+#include "hdf_log.h"
 
 static void HdfDeviceTokenConstruct(struct HdfDeviceToken *inst)
 {
@@ -17,6 +18,7 @@ static void HdfDeviceTokenConstruct(struct HdfDeviceToken *inst)
 
 struct HdfObject *HdfDeviceTokenCreate()
 {
+    HDF_LOGD("%s enter", __func__);
     struct HdfDeviceToken *token =
         (struct HdfDeviceToken *)OsalMemCalloc(sizeof(struct HdfDeviceToken));
     if (token != NULL) {
